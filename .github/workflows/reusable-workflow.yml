@@ -25,4 +25,10 @@ jobs:
         name: results
         path: ${{ github.workspace }}
 
+    - name: Mostrar Variable
+      run: echo "El valor de MI_VARIABLE es $MI_VARIABLE"
+
+    - name: Mostrar Variable
+      run: echo "El valor de MI_VARIABLE es ${{ needs.job1.outputs.output1 }}"
+
 
