@@ -20,7 +20,5 @@ jobs:
         echo "MI_VARIABLE=Esta es la primera variable" >> $GITHUB_ENV
         echo "MI_VARIABLE=Esta es la segunda variable" >> $GITHUB_OUTPUT
 
-    - name: Mostrar Variable
-      run: echo "El valor de MI_VARIABLE es $MI_VARIABLE"
 
 
