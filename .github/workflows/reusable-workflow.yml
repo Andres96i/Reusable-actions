@@ -8,6 +8,7 @@ jobs:
   configurar-y-mostrar:
     runs-on: ubuntu-latest
 
+    # No necesitas definir outputs aquí, los usaremos más adelante con artifacts
     steps:
     - name: Checkout código
       uses: actions/checkout@v4
@@ -23,4 +24,5 @@ jobs:
       with:
         name: results
         path: ${{ github.workspace }}
+
 
