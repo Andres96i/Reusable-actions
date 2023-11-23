@@ -1,8 +1,8 @@
 name: Reusable-workflow
 
 on:
-  workflow_call:
-
+  repository_dispatch:
+    types: [activate-workflow]
 
 jobs:
   configurar-y-mostrar:
@@ -22,4 +22,5 @@ jobs:
 
     - name: Mostrar Variable
       run: echo "El valor de MI_VARIABLE es $MI_VARIABLE"
+
 
