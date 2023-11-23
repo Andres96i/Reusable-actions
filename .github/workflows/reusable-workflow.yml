@@ -1,9 +1,8 @@
-# reusable-workflow.yml
-name: Configurar y Mostrar Variable
+name: reusable workflow
 
 on:
-  repository_dispatch:
-    types: [activate-workflow]
+  workflow_call:
+
 
 jobs:
   configurar-y-mostrar:
