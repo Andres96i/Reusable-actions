@@ -7,8 +7,6 @@ on:
 jobs:
   configurar-y-mostrar:
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.conf-variable.outputs.MI_VARIABLE }}
 
     steps:
     - name: Checkout código
@@ -20,5 +18,9 @@ jobs:
         echo "MI_VARIABLE=Esta es la primera variable" >> $GITHUB_ENV
         echo "MI_VARIABLE=Esta es la segunda variable" >> $GITHUB_OUTPUT
 
-
+    - name: Persistir resultados
+      uses: actions/upload-artifact@v2
+      with:
+        name: results
+        path: ${{ github.workspace }}
 
