@@ -8,14 +8,14 @@ jobs:
   configurar-y-mostrar:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.configurar-variable.outputs.MI_VARIABLE }}
+      output1: ${{ steps.conf-variable.outputs.MI_VARIABLE }}
 
     steps:
     - name: Checkout código
       uses: actions/checkout@v4
 
     - name: Configurar variable
-      id: configurar-variable
+      id: conf-variable
       run: |
         echo "MI_VARIABLE=Esta es la primera variable" >> $GITHUB_ENV
         echo "MI_VARIABLE=Esta es la segunda variable" >> $GITHUB_OUTPUT
