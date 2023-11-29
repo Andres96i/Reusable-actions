@@ -1,33 +1,33 @@
-name: Reusable-workflow
+name: Mostrar Variables distintas de un job a otro.
 
 on:
-  repository_dispatch:
-    types: [activate-workflow]
+  workflow_call:
 
 jobs:
-  configurar-y-mostrar:
-    runs-on: ubuntu-latest
 
-    # No necesitas definir outputs aquí, los usaremos más adelante con artifacts
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.configurar-variable.outputs.MI_VARIABLE }}
+
     steps:
     - name: Checkout código
       uses: actions/checkout@v4
 
     - name: Configurar variable
-      id: conf-variable
+      id: configurar-variable
       run: |
-        echo "MI_VARIABLE=Esta es la primera variable" >> $GITHUB_ENV
-        echo "MI_VARIABLE=Esta es la segunda variable" >> $GITHUB_OUTPUT
-
-    - name: Persistir resultados
-      uses: actions/upload-artifact@v2
-      with:
-        name: results
-        path: ${{ github.workspace }}
+        echo "MI_VARIABLE=Hola, mundo" >> $GITHUB_ENV
+        echo "MI_VARIABLE=Hola, mundo2" >> $GITHUB_OUTPUT
 
     - name: Mostrar Variable
       run: echo "El valor de MI_VARIABLE es $MI_VARIABLE"
 
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Mostrar Variable
       run: echo "El valor de MI_VARIABLE es ${{ needs.job1.outputs.output1 }}"
 
