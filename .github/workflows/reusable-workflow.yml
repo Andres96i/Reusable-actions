@@ -2,15 +2,24 @@ name: Reusable Workflow
 
 on:
   workflow_call:
+    inputs:
+      input1:
+        description: 'Description for Input 1'
+        required: true
+        type: string
+      input2:
+        description: 'Description for Input 2'
+        required: true
+        type: string
 
 jobs:
-
   job1:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - name: Write something to log
-
       run: |
         echo "I am a Reusable Workflow From Other Repository"
+        echo "Input 1: ${{ inputs.input1 }}"
+        echo "Input 2: ${{ inputs.input2 }}"
